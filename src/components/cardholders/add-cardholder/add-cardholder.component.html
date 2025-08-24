@@ -1,0 +1,45 @@
+<h2 mat-dialog-title>Add Cardholder</h2>
+<mat-dialog-content>
+    <form #form="ngForm" (ngSubmit)="save(form.value)" class="add-form">
+
+    <mat-form-field>
+        <mat-label>First Name</mat-label>
+        <input matInput required name="firstName" ngModel>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Last Name</mat-label>
+        <input matInput required name="lastName" ngModel>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Address</mat-label>
+        <input matInput required name="address" ngModel>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>PhoneNumber</mat-label>
+        <input matInput required name="phoneNumber" ngModel   pattern="^\+\d+$" #phoneNumber="ngModel">
+        <mat-error *ngIf="phoneNumber.invalid && phoneNumber.touched">
+            Must start with + and contain only digits (no spaces).
+        </mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+        <mat-label>Transaction Count</mat-label>
+        <input matInput required name="transactionCount" ngModel type="number" min="0">
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+        <button mat-raised-button color="primary" type="button" (click)="cancel()">
+            Cancel
+        </button>
+
+        <button mat-raised-button color="secondary" type="submit" class="saveButton"
+        [disabled]="!form.valid">
+            Save
+        </button>
+    </div>
+
+    </form>
+</mat-dialog-content>

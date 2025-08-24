@@ -1,0 +1,77 @@
+
+<div class="cardholders-component">  
+    <div class="cardholders-header">
+        <h2>Cardholders</h2>
+        <button 
+            mat-mini-fab aria-label="Add" 
+            (click)="addCardholder()" 
+            matTooltip="Add new cardholder" 
+            matTooltipPosition="above"
+        >
+                <mat-icon>add</mat-icon>
+        </button>
+    </div>
+
+    <div *ngIf="loading">Loading...</div>
+
+    <div *ngIf="!loading">
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+            <!-- First Name -->
+            <ng-container matColumnDef="firstName">
+                <th mat-header-cell *matHeaderCellDef> First Name </th>
+                <td mat-cell *matCellDef="let c"> {{ c.firstName }} </td>
+            </ng-container>
+
+            <!-- Last Name -->
+            <ng-container matColumnDef="lastName">
+                <th mat-header-cell *matHeaderCellDef> Last Name </th>
+                <td mat-cell *matCellDef="let c"> {{ c.lastName }} </td>
+            </ng-container>
+
+            <!-- Address -->
+            <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef> Address </th>
+                <td mat-cell *matCellDef="let c"> {{ c.address }} </td>
+            </ng-container>
+
+            <!-- Phone Number -->
+            <ng-container matColumnDef="phoneNumber">
+                <th mat-header-cell *matHeaderCellDef> Phone Number </th>
+                <td mat-cell *matCellDef="let c"> {{ c.phoneNumber }} </td>
+            </ng-container>
+
+            <!-- Transaction Count -->
+            <ng-container matColumnDef="transactionCount">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Transaction Count </th>
+                <td mat-cell *matCellDef="let c"> {{ c.transactionCount }} </td>
+            </ng-container>
+
+            <!-- Edit Buttons -->
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef>Actions</th>
+                <td mat-cell *matCellDef="let c">
+                    <button 
+                        mat-icon-button class="icon-edit" 
+                        (click)="editCardholder(c)"
+                        matTooltip="Edit cardholder" 
+                    >
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button 
+                        mat-icon-button class="icon-delete" 
+                        (click)="deleteCardholder(c)"
+                        matTooltip="Delete cardholder" 
+                    >
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+    </div>
+
+</div>
+

@@ -1,0 +1,18 @@
+.add-form {
+    display: flex;
+    flex-direction: column;
+    padding-top: 10px;
+
+    .saveButton {
+        background-color: #B5E2D9;
+    }
+}
+
+.mat-mdc-dialog-content {
+    background-color: #DAE5E4;
+}
+
+.mat-mdc-dialog-title {
+    border-bottom: 1px solid #B5E2D9;
+    background-color: #DAE5E4;
+}

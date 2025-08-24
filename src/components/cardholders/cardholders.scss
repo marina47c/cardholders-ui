@@ -1,0 +1,29 @@
+.cardholders-component {
+    height: 100%;
+    background-color: #DAE5E4;
+    padding: 20px;
+
+    .mat-mdc-table {
+        padding: 8px;
+        border-radius: 8px;
+    }
+}
+
+.cardholders-header {
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 8px;
+    align-items: center;
+}
+
+.mat-mdc-mini-fab {
+  background-color: #B5E2D9;
+}
+
+.icon-edit:hover {
+  color: #9bdfd1;
+}
+.icon-delete:hover {
+  color:  #c04949
+}
+
