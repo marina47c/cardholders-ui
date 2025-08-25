@@ -12,9 +12,11 @@
         </button>
     </div>
 
-    <div *ngIf="loading">Loading...</div>
+    @if (loading) {
+        <div>Loading...</div>
+    }
 
-    <div *ngIf="!loading">
+    <div [hidden]="loading" aria-busy="{{loading}}">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
 
             <!-- First Name -->
@@ -72,6 +74,5 @@
             <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
         </table>
     </div>
-
 </div>
 

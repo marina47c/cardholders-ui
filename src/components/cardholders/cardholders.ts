@@ -35,11 +35,22 @@ export class Cardholders {
 
   @ViewChild(MatSort) sort!: MatSort;
 
-  constructor(private cardholderService: CardholderService, private dialog: MatDialog) {};
+  constructor(private cardholderService: CardholderService, private dialog: MatDialog) {
+     this.dataSource.sortingDataAccessor = (item: CardholderDto, property: string) => {
+        if (property === 'transactionCount') {
+          return Number(item.transactionCount);
+        }
+      return (item as any)[property];
+    };
+  };
 
   ngOnInit(): void {
       this.loadCardholders();
     }
+
+  ngAfterViewInit() {
+    this.dataSource.sort = this.sort;
+  }
 
   loadCardholders() {
     this.loading = true;
@@ -47,7 +58,6 @@ export class Cardholders {
     this.cardholderService.getCardholders().subscribe({
         next: (res: PagedResponse<CardholderDto>) => {
           this.dataSource.data = res.items;
-          this.dataSource.sort = this.sort;
           this.total = res.totalCount;
           this.loading = false;
         },
