@@ -58,11 +58,11 @@ git clone https://github.com/marina47c/cardholders-ui.git
 	
 7. After logging in, you should see the application running in your browser
    
-   ![[Pasted image 20250828204620.png]]
+<img width="1873" height="899" alt="image" src="https://github.com/user-attachments/assets/0798b85b-4a9b-4925-a518-4be78573f4a6" />
 
-![[Pasted image 20250828204700.png]]
+<img width="1859" height="1007" alt="image" src="https://github.com/user-attachments/assets/eff52f0f-82e5-4626-a171-0205b5ada537" />
 
+<img width="1859" height="878" alt="image" src="https://github.com/user-attachments/assets/a290a70c-971e-4066-aec0-b9bdabb3db75" />
 
-![[Pasted image 20250828204821.png]]
+<img width="1846" height="1006" alt="image" src="https://github.com/user-attachments/assets/2291b511-df5d-4b05-98bf-1daeece2e4ed" />
 
-![[Pasted image 20250828204929.png]]
