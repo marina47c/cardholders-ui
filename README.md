@@ -1,63 +1,68 @@
-<<<<<<< HEAD
-# cardholders-ui
-=======
-# CardholdersUi
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.2.0.
+## Backend development environment / prerequisites
 
-## Development server
+- MS SQL server 2022 (version used in development 16.0.1145; SQL Express)
+- Visual Studio 2022
+- .NET SDK 9.0.304
+- Target Framework .NET 8
 
-To start a local development server, run:
+## Frontend development environment / prerequisites
 
+- Node.js (v24.4.0)
+- npm (11.4.2)
+- angular CLI (20.2.0)
+
+## Installation Instructions
+
+1. Clone backend repository:
 ```bash
-ng serve
+git clone https://github.com/marina47c/CardholdersMS.git
 ```
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+2. Open the project in Visual Studio. 
+	Locate appsetting.json update the connection string to match your machine:
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
+```json
+	"ConnectionStrings": {
+	  "Default": "Server=["YOUR SERVER MACHINE"];Database=CardholdersDb;Trusted_Connection=True;TrustServerCertificate=True;"
+	}
 ```
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
+ 3. Run the backend
+	- Running the project will:
+	    - Create the `CardholdersDb` database
+	    - Seed initial data
+	    - Launch Swagger at: [https://localhost:7107/swagger/index.html](https://localhost:7107/swagger/index.html)
+	 
+4. Clone the frontend repository
 ```bash
-ng generate --help
+git clone https://github.com/marina47c/cardholders-ui.git
 ```
 
-## Building
-
-To build the project run:
-
-```bash
-ng build
+5.  Install dependencies and run
+	Navigate into the frontend project directory, then run:
+	
+	```bash
+		npm install
+		ng serve -o
 ```
+	
+	This will open the app at: [http://localhost:4200/login](http://localhost:4200/login)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+6. Default login credentials:
 
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
+```pgsql
+	user: admin
+	password: admin123
 ```
+	
+7. After logging in, you should see the application running in your browser
+   
+<img width="1873" height="899" alt="image" src="https://github.com/user-attachments/assets/0798b85b-4a9b-4925-a518-4be78573f4a6" />
 
-## Running end-to-end tests
+<img width="1859" height="1007" alt="image" src="https://github.com/user-attachments/assets/eff52f0f-82e5-4626-a171-0205b5ada537" />
 
-For end-to-end (e2e) testing, run:
+<img width="1859" height="878" alt="image" src="https://github.com/user-attachments/assets/a290a70c-971e-4066-aec0-b9bdabb3db75" />
 
-```bash
-ng e2e
-```
+<img width="1846" height="1006" alt="image" src="https://github.com/user-attachments/assets/2291b511-df5d-4b05-98bf-1daeece2e4ed" />
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
->>>>>>> f463de8 (initial commit)
