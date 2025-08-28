@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { AddCardholderDto, CardholderDto, EditCardholderDto, PagedResponse } from "../../models/cardholders";
 import { environment } from "../../environments/environment";
 import { tap } from "rxjs";
@@ -10,8 +10,12 @@ export class CardholderService {
 
     constructor(private http: HttpClient) {}
 
-    getCardholders() {
-        return this.http.get<PagedResponse<CardholderDto>>(`${this.baseUrl}/cardholders/`)
+    getCardholders(page = 1, pageSize = 20) {
+        const params = new HttpParams()
+            .set('page', page)
+            .set('pageSize', pageSize);
+
+        return this.http.get<PagedResponse<CardholderDto>>(`${this.baseUrl}/cardholders/`, { params })
             .pipe(tap(
                 res => console.info(res)
             ));

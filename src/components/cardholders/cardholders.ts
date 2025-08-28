@@ -10,6 +10,7 @@ import { AddCardholderComponent } from './add-cardholder/add-cardholder.componen
 import { EditCardholderComponent } from './edit-cardholder/edit-cardholder.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSort, MatSortModule } from '@angular/material/sort';
+import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-cardholders',
@@ -20,7 +21,8 @@ import { MatSort, MatSortModule } from '@angular/material/sort';
     MatButtonModule, 
     MatDialogModule, 
     MatTooltipModule,
-    MatSortModule
+    MatSortModule,
+    MatPaginatorModule,  
    ],
   templateUrl: './cardholders.html',
   styleUrls: ['./cardholders.scss'],
@@ -32,8 +34,11 @@ export class Cardholders {
   loading: boolean = true;
   dataSource = new MatTableDataSource<CardholderDto>([]);
   displayedColumns: string[] = ['firstName', 'lastName', 'address', 'phoneNumber', 'transactionCount', 'actions'];
+  page = 1;
+  pageSize = 20;
 
   @ViewChild(MatSort) sort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private cardholderService: CardholderService, private dialog: MatDialog) {
      this.dataSource.sortingDataAccessor = (item: CardholderDto, property: string) => {
@@ -55,7 +60,7 @@ export class Cardholders {
   loadCardholders() {
     this.loading = true;
     
-    this.cardholderService.getCardholders().subscribe({
+    this.cardholderService.getCardholders(this.page, this.pageSize).subscribe({
         next: (res: PagedResponse<CardholderDto>) => {
           this.dataSource.data = res.items;
           this.total = res.totalCount;
@@ -66,6 +71,12 @@ export class Cardholders {
           this.loading = false;
         }
     });
+  }
+
+  onPageChange(e: PageEvent) {
+    this.page = e.pageIndex + 1; 
+    this.pageSize = e.pageSize;
+    this.loadCardholders();
   }
 
   addCardholder() {
